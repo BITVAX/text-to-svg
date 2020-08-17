@@ -11,6 +11,7 @@ const program = require('commander')
   .usage('[options] text')
   .option('-x, --x <n>', 'horizontal offset', parseFloat)
   .option('-y, --y <n>', 'vertical offset', parseFloat)
+  .option('-f, --font <font>','font' )
   .option('-s, --font-size <n>', 'font size', parseFloat)
   .option('-k, --kerning', 'kerning')
   .option('-a, --anchor [value]', 'anchor point')
@@ -32,7 +33,7 @@ const options = {
 };
 
 const TextToSVG = require('../build/src');
-const textToSVG = TextToSVG.loadSync();
+const textToSVG = TextToSVG.loadSync(program.font);
 
 var svg;
 if (!program.debug) {
